@@ -95,7 +95,7 @@ It also consumes a lot of power due to its internal heater (~800 mW).
 **Analog signal** → Arduino **A1**. 
 - **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
 <p align="center">
-  <img src="(air_quality_pr/media/pic_sds018.png" width="700">
+  <img src="(air_quality_pr/media/pic_sds018.png" width="400">
 </p>  
  **Description:**  
 SDS018 uses a **laser scattering principle**: particles passing through a laser beam reflect light toward a photodiode, producing pulses proportional to particle size and quantity.  
