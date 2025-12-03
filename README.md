@@ -129,7 +129,7 @@ Outputs **PM2.5 and PM10 in μg/m³** through UART every second.
 
 **Interface used:**  
 **UART 9600 baud**  
-- SDS018 TX → Arduino RX  
+- SDS018 TX → Arduino RX(D0)  
 
 ---
 
