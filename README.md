@@ -51,27 +51,35 @@ The MCU allows continuous monitoring without a computer and presents the data in
 ## List of Hardware Components
 
 ### Sensors
-- **DHT11 – Temperature & Humidity Sensor**
+
+---
+
+### **DHT11 – Temperature & Humidity Sensor**
 <p align="center">
   <img src="air_quality_pr/media/pic_dht11.png" width="400">
 </p>
-  
+
 **Description:**  
 DHT11 contains a resistive humidity element and an NTC thermistor, managed by an internal 8-bit MCU. It outputs data via a **single-wire digital protocol**.  
 Provides basic temperature and humidity measurements.
+
 **Advantages:**
 - Very low price  
 - Easy to connect  
 - Low power consumption  
 - Internally calibrated digital output  
+
 **Disadvantages:**
 - Low accuracy (±5%RH, ±2°C)  
 - Low resolution (1°C, 1%RH)  
 - Slow response  
+
 **Interface used:**  
 **Single-wire digital**, connected to Arduino digital pin.
 
-- **MQ135 – Air Quality / CO₂ Approximation Sensor**  
+---
+
+### **MQ135 – Air Quality / CO₂ Approximation Sensor**
 <p align="center">
   <img src="air_quality_pr/media/pic_mq135.png" width="400">
 </p>
@@ -79,6 +87,7 @@ Provides basic temperature and humidity measurements.
 MQ-135 uses a heated SnO₂ sensitive layer whose resistance changes depending on the concentration of gases such as **NH₃, NOx, benzene, alcohol, smoke, and CO₂**.  
 **It does NOT measure true CO₂ concentration in ppm** — only an approximation of "air quality".  
 It also consumes a lot of power due to its internal heater (~800 mW).
+
 **Advantages:**
 - Very inexpensive  
 - Easy analog interface  
@@ -92,16 +101,19 @@ It also consumes a lot of power due to its internal heater (~800 mW).
 - Poor long-term accuracy  
 
 **Interface used:**  
-**Analog signal** → Arduino **A1**. 
-- **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
+**Analog signal** → Arduino **A1**.
+
+---
+
+### **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
 <p align="center">
   <img src="air_quality_pr/media/pic_sds018.png" width="400">
-</p>  
- **Description:**  
+</p>
+
+**Description:**  
 SDS018 uses a **laser scattering principle**: particles passing through a laser beam reflect light toward a photodiode, producing pulses proportional to particle size and quantity.  
 It includes an internal **fan** to ensure stable airflow.  
-Outputs **PM2.5 and PM10 in μg/m³** through UART every second.  
-Source: SDS018 datasheet :contentReference[oaicite:2]{index=2}
+Outputs **PM2.5 and PM10 in μg/m³** through UART every second.
 
 **Advantages over Sharp GP2Y1010AU0F:**
 - True **laser-based** measurement (Sharp uses IR LED → less accurate)  
@@ -119,11 +131,15 @@ Source: SDS018 datasheet :contentReference[oaicite:2]{index=2}
 **UART 9600 baud**  
 - SDS018 TX → Arduino RX  
 
-### Other Components
-## OLED SSD1306 (128×64, I²C)
+---
+
+## Other Components
+
+### **OLED SSD1306 (128×64, I²C)**
 <p align="center">
   <img src="air_quality_pr/media/pic_oled.png" width="400">
-</p>  
+</p>
+
 **Description:**  
 A monochrome 128×64 pixel OLED display driven by the SSD1306 controller. Used to show sensor readings and air quality animations.
 
@@ -143,11 +159,15 @@ A monochrome 128×64 pixel OLED display driven by the SSD1306 controller. Used t
 - SDA → Arduino A4  
 - SCL → Arduino A5  
 
----  
+---
+
+### Additional Components
 - **Arduino Uno (ATmega328P)** — system controller  
 - **Breadboard, jumper wires, USB cable** — assembly and power  
 
-### Why these components  
+---
+
+## Why These Components  
 Each sensor provides a different environmental parameter:  
 DHT11 handles temperature/humidity, MQ135 handles gases/CO₂ approximation, and SDS018 measures PM2.5/PM10 dust.  
 Together they form a complete, affordable, and reliable indoor air monitoring system.
@@ -157,7 +177,7 @@ Together they form a complete, affordable, and reliable indoor air monitoring sy
 ## Wiring Diagram
 <p align="center">
   <img src="air_quality_pr/media/shema.jpg" width="800">
-</p>  
+</p>
 
 ---
 
@@ -176,6 +196,7 @@ A complete technical report will be uploaded here:
 (will be added later)
 
 ---
+
 ## Future Improvements
 
 - **Upgrade the temperature & humidity sensor (replace DHT11 with DHT22)**  
@@ -211,5 +232,3 @@ A complete technical report will be uploaded here:
 
 - **Project Laboratory Materials (BUT FEEC – AVR Labs)**  
   https://github.com/tomas-fryza/avr-labs/tree/master/lab8-project
- 
-
