@@ -337,6 +337,7 @@ automatically rotates between:
 3. qualitative T/H/CO₂ levels,
 4. numeric PM2.5 / PM10 values,
 5. qualitative PM2.5 / PM10 levels.
+
 Automatic screen rotation removes the need for buttons or a
 menu system, keeping the hardware simple while still presenting all important
 information to the user. The UI code in ui.c/oled.c is decoupled from sensor
