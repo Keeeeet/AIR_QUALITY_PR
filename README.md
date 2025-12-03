@@ -188,7 +188,7 @@ A complete technical report will be uploaded here:
 ---
 
 ## Project Demonstration Video
-(will be added later)
+[(demostration video)](https://youtu.be/z08kOE73X8o)
 
 ---
 
