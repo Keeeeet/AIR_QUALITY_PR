@@ -181,9 +181,38 @@ Together they form a complete, affordable, and reliable indoor air monitoring sy
 
 ---
 
-## Technical Documentation
-A complete technical report will be uploaded here:  
-**Technical documentation – coming soon**
+## Software
+
+The firmware is written in bare-metal C for the ATmega328P and is organised around a simple
+blocking main loop. Each iteration of the loop reads all sensors, computes an overall
+air-quality score, and updates one of several UI screens on the OLED display.
+
+### 1. System initialisation
+
+At power-up the firmware configures the display and all sensors:
+
+```c
+int main(void)
+{
+    // Display
+    oled_init(OLED_DISP_ON);      // SSD1306 over I²C (twi.c/twi.h)
+    oled_charMode(NORMALSIZE);
+
+    // Sensors
+    dht11_init();                 // temperature & humidity
+    mq135_init();                 // gas / CO₂-like air quality (ADC)
+    sds018_init();                // PM2.5 / PM10 (UART)
+
+    _delay_ms(2000);              // allow sensors to stabilise before first read
+
+    // Initial defaults and screen state are set here...
+    // (temp, hum, pm25_10, pm10_10, quality strings, screen index, timers)
+
+    while (1) {
+        // main measurement & display cycle
+    }
+}
+```
 
 ---
 
