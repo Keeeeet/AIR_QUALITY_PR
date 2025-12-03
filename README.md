@@ -230,5 +230,5 @@ A complete technical report will be uploaded here:
 - **ATmega328P Microcontroller Datasheet**  
   https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
 
-- **Project Laboratory Materials (BUT FEEC – AVR Labs)**  
+- **Project Laboratory Materials (AVR Labs)**  
   https://github.com/tomas-fryza/avr-labs/tree/master/lab8-project
