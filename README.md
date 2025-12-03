@@ -6,7 +6,7 @@ It measures temperature, humidity, CO₂/air quality, PM2.5, and PM10 levels and
 ---
 
 ## Main Project Photo
-media/mainPic.jpg
+air_quality_pr/media/mainPic.jpg
 
 ---
 
