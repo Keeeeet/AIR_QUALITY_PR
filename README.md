@@ -92,9 +92,23 @@ A complete technical report will be uploaded here:
 ---
 
 ## References
-- DHT11 Sensor Datasheet  
-- MQ135 Gas Sensor Datasheet  
-- SDS018 Laser Dust Sensor Product Manual  
-- SSD1306 OLED Controller Datasheet  
-- ATMega328P Microcontroller Datasheet  
+
+- **DHT11 Sensor Datasheet**  
+  https://botland.cz/index.php?controller=attachment&id_attachment=251
+
+- **MQ135 Gas Sensor Datasheet**  
+  https://www.olimex.com/Products/Components/Sensors/Gas/SNS-MQ135/resources/SNS-MQ135.pdf
+
+- **SDS018 Laser Dust Sensor Manual**  
+  https://botland.cz/index.php?controller=attachment&id_attachment=1887
+
+- **SSD1306 OLED Display Controller Datasheet**  
+  https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf
+
+- **ATmega328P Microcontroller Datasheet**  
+  https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
+
+- **Project Laboratory Materials (BUT FEEC – AVR Labs)**  
+  https://github.com/tomas-fryza/avr-labs/tree/master/lab8-project
+ 
 
