@@ -192,11 +192,13 @@ A complete technical report will be uploaded here:
 
 ---
 
-## Project Poster with Block diagram
+## Project Poster and Block diagram
 <p align="center">
   <img src="air_quality_pr/media/pl_final.png" width="1200">
 </p>
-
+<p align="center">
+  <img src="air_quality_pr/media/flowdiagrampr.png" width="1200">
+</p>
 ---
 
 ## Future Improvements
