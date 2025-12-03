@@ -72,7 +72,6 @@ Provides basic temperature and humidity measurements.
 **Single-wire digital**, connected to Arduino digital pin.
 
 - **MQ135 – Air Quality / CO₂ Approximation Sensor**  
-- ![MQ135](air_quality_pr/media/pic_mq135.png)
 <p align="center">
   <img src="air_quality_pr/media/pic_mq135.png" width="700">
 </p>
