@@ -192,7 +192,7 @@ A complete technical report will be uploaded here:
 
 ---
 
-## Project Poster
+## Project Poster with Block diagram
 (will be added later)
 
 ---
