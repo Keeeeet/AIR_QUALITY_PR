@@ -7,8 +7,9 @@ It measures temperature, humidity, CO₂/air quality, PM2.5, and PM10 levels and
 
 ## Main Project Photo
 <p align="center">
-  <img src="air_quality_pr/media/mainPic.jpg" width="500">
+  <img src="air_quality_pr/media/mainPic.jpg" width="700">
 </p>
+
 ---
 
 ## Team Members
@@ -51,7 +52,10 @@ The MCU allows continuous monitoring without a computer and presents the data in
 
 ### Sensors
 - **DHT11 – Temperature & Humidity Sensor**
-- ![DHT11](air_quality_pr/media/pic_dht11.png)  
+<p align="center">
+  <img src="air_quality_pr/media/pic_dht11.png" width="700">
+</p>
+  
 **Description:**  
 DHT11 contains a resistive humidity element and an NTC thermistor, managed by an internal 8-bit MCU. It outputs data via a **single-wire digital protocol**.  
 Provides basic temperature and humidity measurements.
@@ -69,6 +73,10 @@ Provides basic temperature and humidity measurements.
 
 - **MQ135 – Air Quality / CO₂ Approximation Sensor**  
 - ![MQ135](air_quality_pr/media/pic_mq135.png)
+<p align="center">
+  <img src="air_quality_pr/media/pic_mq135.png" width="700">
+</p>
+
 MQ-135 uses a heated SnO₂ sensitive layer whose resistance changes depending on the concentration of gases such as **NH₃, NOx, benzene, alcohol, smoke, and CO₂**.  
 **It does NOT measure true CO₂ concentration in ppm** — only an approximation of "air quality".  
 It also consumes a lot of power due to its internal heater (~800 mW).
@@ -87,7 +95,9 @@ It also consumes a lot of power due to its internal heater (~800 mW).
 **Interface used:**  
 **Analog signal** → Arduino **A1**. 
 - **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
-- ![SDS018](air_quality_pr/media/pic_sds018.png)  
+<p align="center">
+  <img src="(air_quality_pr/media/pic_sds018.png" width="700">
+</p>  
  **Description:**  
 SDS018 uses a **laser scattering principle**: particles passing through a laser beam reflect light toward a photodiode, producing pulses proportional to particle size and quantity.  
 It includes an internal **fan** to ensure stable airflow.  
@@ -112,8 +122,9 @@ Source: SDS018 datasheet :contentReference[oaicite:2]{index=2}
 
 ### Other Components
 ## OLED SSD1306 (128×64, I²C)
-- ![OLED](air_quality_pr/media/pic_oled.png)
-
+<p align="center">
+  <img src="(air_quality_pr/media/pic_oled.png" width="700">
+</p>  
 **Description:**  
 A monochrome 128×64 pixel OLED display driven by the SSD1306 controller. Used to show sensor readings and air quality animations.
 
@@ -145,7 +156,9 @@ Together they form a complete, affordable, and reliable indoor air monitoring sy
 ---
 
 ## Wiring Diagram
-- ![Wiring Diagram](air_quality_pr/media/shema.jpg)
+<p align="center">
+  <img src="(air_quality_pr/media/shema.jpg" width="700">
+</p>  
 
 ---
 
