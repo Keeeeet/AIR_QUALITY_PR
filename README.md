@@ -213,6 +213,134 @@ int main(void)
     }
 }
 ```
+### 2. One measurement / display cycle.
+Inside the infinite loop the firmware performs one full measurement and display cycle
+in five logical steps:
+```c
+while (1)
+{
+    /* 1) Read MQ135 and map to CO₂-like quality label */
+    mq_raw     = mq135_read_raw();          // raw ADC 0–1023
+    mq_quality = mq135_get_quality(mq_raw); // "GOOD" / "NORMAL" / "BAD"
+    co2_q      = mq_quality;
+
+    /* 2) Read DHT11 (temperature & humidity) and classify */
+    int16_t t_read = 0;
+    int16_t h_read = 0;
+    uint8_t status = dht11_read(&t_read, &h_read);
+
+    if (status == DHT11_OK) {
+        temp   = (int)t_read;               // °C
+        hum    = (int)h_read;               // %
+        temp_q = quality_from_value(temp);  // "GOOD"/"NORMAL"/"BAD"
+        hum_q  = quality_from_value(hum);
+    } else {
+        temp_q = "ERR";
+        hum_q  = "ERR";
+    }
+
+    /* 3) Read SDS018 (PM2.5/PM10 via UART) and keep last valid data */
+    uint16_t pm25_tmp = pm25_10;
+    uint16_t pm10_tmp = pm10_10;
+
+    if (sds018_read(&pm25_tmp, &pm10_tmp) == 0) {
+        pm25_10 = pm25_tmp;                 // PM2.5 × 10
+        pm10_10 = pm10_tmp;                 // PM10 × 10
+    }
+
+    int pm25_int = pm25_10 / 10;            // e.g. 253 → 25.3 µg/m³
+    int pm10_int = pm10_10 / 10;
+    pm25_q = quality_from_value(pm25_int);
+    pm10_q = quality_from_value(pm10_int);
+
+    /* 4) Compute overall air-quality score from all sensors */
+    int s_temp = quality_to_score(temp_q);  // GOOD=0, NORMAL=1, BAD/ERR=2
+    int s_hum  = quality_to_score(hum_q);
+    int s_co2  = quality_to_score(co2_q);
+    int s_pm25 = quality_to_score(pm25_q);
+    int s_pm10 = quality_to_score(pm10_q);
+
+    int avg_score = (s_temp + s_hum + s_co2 + s_pm25 + s_pm10) / 5;
+    const char *overall_quality = score_to_quality(avg_score);
+
+    /* 5) UI state machine: select and update current screen */
+    switch (screen) {
+    case 0:
+        ui_show_cat(overall_quality);           // animated cat + overall label
+        _delay_ms(1000);
+        if (++seconds_in_screen >= 3) { screen = 1; seconds_in_screen = 0; }
+        break;
+
+    case 1:
+        screen_temp_hum_values(temp, hum, co2_q, mq_raw);
+        _delay_ms(1000);
+        if (++seconds_in_screen >= 5) { screen = 2; seconds_in_screen = 0; }
+        break;
+
+    case 2:
+        screen_temp_hum_levels(temp_q, hum_q, co2_q);
+        _delay_ms(1000);
+        if (++seconds_in_screen >= 2) { screen = 3; seconds_in_screen = 0; }
+        break;
+
+    case 3:
+        screen_pm_values((int)pm25_10, (int)pm10_10);
+        _delay_ms(1000);
+        if (++seconds_in_screen >= 5) { screen = 4; seconds_in_screen = 0; }
+        break;
+
+    case 4:
+        screen_pm_levels(pm25_q, pm10_q);
+        _delay_ms(1000);
+        if (++seconds_in_screen >= 2) { screen = 0; seconds_in_screen = 0; }
+        break;
+    }
+}
+```
+Design choices:
+Integer-only processing – PM values are kept as “×10” integers, which avoids floating-point overhead on an 8-bit MCU.
+
+Quality labels + numeric score – helper functions.
+```c
+static const char *quality_from_value(int v);
+static int         quality_to_score(const char *q);
+static const char *score_to_quality(int s);
+```
+Сonvert raw readings into GOOD / NORMAL / BAD, then into numeric scores
+(0, 1, 2) and back. This makes it easy to combine all sensors into a single
+“overall air-quality” value while still keeping the logic integer-only.
+### 3. UI rendering and screen rotation
+The high-level UI module converts processed values into human-readable screens:
+```c
+void screen_temp_hum_values(int t, int h,
+                            const char *co2_q,
+                            uint16_t co2_raw);
+
+void screen_temp_hum_levels(const char *t_q,
+                            const char *h_q,
+                            const char *co2_q);
+
+void screen_pm_values(int pm25_10, int pm10_10);
+
+void screen_pm_levels(const char *pm25_q,
+                      const char *pm10_q);
+
+void ui_show_cat(const char *overall_quality);
+
+```
+Each function draws static labels once and then only updates changing values
+(temperature, humidity, PM values or quality labels). The screen and
+seconds_in_screen variables in main.c implement a small state machine that
+automatically rotates between:
+1. animated cat with overall air-quality label,
+2. numeric temperature / humidity / CO₂ (MQ135) values,
+3. qualitative T/H/CO₂ levels,
+4. numeric PM2.5 / PM10 values,
+5. qualitative PM2.5 / PM10 levels.
+Automatic screen rotation removes the need for buttons or a
+menu system, keeping the hardware simple while still presenting all important
+information to the user. The UI code in ui.c/oled.c is decoupled from sensor
+drivers, so layout and graphics can be changed without touching measurement code.
 
 ---
 
