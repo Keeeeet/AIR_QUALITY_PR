@@ -49,17 +49,90 @@ The MCU allows continuous monitoring without a computer and presents the data in
 ## List of Hardware Components
 
 ### Sensors
-- **DHT11 – Temperature & Humidity Sensor**  
-  Measures basic environmental conditions.
+- **DHT11 – Temperature & Humidity Sensor**
+![DHT11](media/pic_dht11.png)  
+**Description:**  
+DHT11 contains a resistive humidity element and an NTC thermistor, managed by an internal 8-bit MCU. It outputs data via a **single-wire digital protocol**.  
+Provides basic temperature and humidity measurements.
+**Advantages:**
+- Very low price  
+- Easy to connect  
+- Low power consumption  
+- Internally calibrated digital output  
+**Disadvantages:**
+- Low accuracy (±5%RH, ±2°C)  
+- Low resolution (1°C, 1%RH)  
+- Slow response  
+**Interface used:**  
+**Single-wire digital**, connected to Arduino digital pin.
 
 - **MQ135 – Air Quality / CO₂ Approximation Sensor**  
-  Estimates general air quality based on gas concentration.
+![MQ135](media/pic_mq135.png)
+MQ-135 uses a heated SnO₂ sensitive layer whose resistance changes depending on the concentration of gases such as **NH₃, NOx, benzene, alcohol, smoke, and CO₂**.  
+**It does NOT measure true CO₂ concentration in ppm** — only an approximation of "air quality".  
+It also consumes a lot of power due to its internal heater (~800 mW).
+**Advantages:**
+- Very inexpensive  
+- Easy analog interface  
+- Wide range of detectable gases  
 
-- **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**  
-  Measures dust concentration using laser scattering for fine particulate matter.
+**Disadvantages:**
+- Does *not* measure CO₂ directly  
+- Very power-hungry (heater required)  
+- Requires long preheating (24 hours for calibration)  
+- Output highly unstable and environment-dependent  
+- Poor long-term accuracy  
+
+**Interface used:**  
+**Analog signal** → Arduino **A1**. 
+- **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
+ ![SDS018](media/pic_sds018.png)  
+ **Description:**  
+SDS018 uses a **laser scattering principle**: particles passing through a laser beam reflect light toward a photodiode, producing pulses proportional to particle size and quantity.  
+It includes an internal **fan** to ensure stable airflow.  
+Outputs **PM2.5 and PM10 in μg/m³** through UART every second.  
+Source: SDS018 datasheet :contentReference[oaicite:2]{index=2}
+
+**Advantages over Sharp GP2Y1010AU0F:**
+- True **laser-based** measurement (Sharp uses IR LED → less accurate)  
+- Higher accuracy and repeatability  
+- Built-in fan ensures consistent airflow  
+- Provides digital PM values directly via UART  
+- Resolution down to **0.3 μm particles**  
+
+**Disadvantages:**
+- Larger physical size  
+- Fan produces some noise  
+- Limited laser lifetime (~8000 hours)  
+
+**Interface used:**  
+**UART 9600 baud**  
+- SDS018 TX → Arduino RX  
 
 ### Other Components
-- **OLED I2C Display (SSD1306, 128×64)** — main user interface  
+## OLED SSD1306 (128×64, I²C)
+![OLED](media/pic_oled.png)
+
+**Description:**  
+A monochrome 128×64 pixel OLED display driven by the SSD1306 controller. Used to show sensor readings and air quality animations.
+
+**Advantages:**
+- Very easy to connect (only 2 data lines)  
+- Low power consumption  
+- High contrast and readability  
+- Supports graphics and custom UI  
+
+**Disadvantages:**
+- Small size  
+- Monochrome  
+- OLED organic degradation over time  
+
+**Interface used:**  
+**I²C**  
+- SDA → Arduino A4  
+- SCL → Arduino A5  
+
+---  
 - **Arduino Uno (ATmega328P)** — system controller  
 - **Breadboard, jumper wires, USB cable** — assembly and power  
 
@@ -71,7 +144,7 @@ Together they form a complete, affordable, and reliable indoor air monitoring sy
 ---
 
 ## Wiring Diagram
-(will be added later)
+![Wiring Diagram](media/shema.jpg)
 
 ---
 
