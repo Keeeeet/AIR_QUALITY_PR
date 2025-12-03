@@ -194,7 +194,7 @@ A complete technical report will be uploaded here:
 
 ## Project Poster with Block diagram
 <p align="center">
-  <img src="air_quality_pr/media/pl_final.png" width="800">
+  <img src="air_quality_pr/media/pl_final.png" width="1000">
 </p>
 
 ---
