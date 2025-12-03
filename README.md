@@ -53,7 +53,7 @@ The MCU allows continuous monitoring without a computer and presents the data in
 ### Sensors
 - **DHT11 – Temperature & Humidity Sensor**
 <p align="center">
-  <img src="air_quality_pr/media/pic_dht11.png" width="700">
+  <img src="air_quality_pr/media/pic_dht11.png" width="400">
 </p>
   
 **Description:**  
@@ -73,7 +73,7 @@ Provides basic temperature and humidity measurements.
 
 - **MQ135 – Air Quality / CO₂ Approximation Sensor**  
 <p align="center">
-  <img src="air_quality_pr/media/pic_mq135.png" width="700">
+  <img src="air_quality_pr/media/pic_mq135.png" width="400">
 </p>
 
 MQ-135 uses a heated SnO₂ sensitive layer whose resistance changes depending on the concentration of gases such as **NH₃, NOx, benzene, alcohol, smoke, and CO₂**.  
@@ -122,7 +122,7 @@ Source: SDS018 datasheet :contentReference[oaicite:2]{index=2}
 ### Other Components
 ## OLED SSD1306 (128×64, I²C)
 <p align="center">
-  <img src="(air_quality_pr/media/pic_oled.png" width="700">
+  <img src="(air_quality_pr/media/pic_oled.png" width="400">
 </p>  
 **Description:**  
 A monochrome 128×64 pixel OLED display driven by the SSD1306 controller. Used to show sensor readings and air quality animations.
@@ -156,7 +156,7 @@ Together they form a complete, affordable, and reliable indoor air monitoring sy
 
 ## Wiring Diagram
 <p align="center">
-  <img src="(air_quality_pr/media/shema.jpg" width="700">
+  <img src="(air_quality_pr/media/shema.jpg" width="600">
 </p>  
 
 ---
