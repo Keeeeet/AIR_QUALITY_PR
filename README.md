@@ -95,7 +95,7 @@ It also consumes a lot of power due to its internal heater (~800 mW).
 **Analog signal** → Arduino **A1**. 
 - **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
 <p align="center">
-  <img src="(air_quality_pr/media/pic_sds018.png" width="400">
+  <img src="air_quality_pr/media/pic_sds018.png" width="400">
 </p>  
  **Description:**  
 SDS018 uses a **laser scattering principle**: particles passing through a laser beam reflect light toward a photodiode, producing pulses proportional to particle size and quantity.  
@@ -122,7 +122,7 @@ Source: SDS018 datasheet :contentReference[oaicite:2]{index=2}
 ### Other Components
 ## OLED SSD1306 (128×64, I²C)
 <p align="center">
-  <img src="(air_quality_pr/media/pic_oled.png" width="400">
+  <img src="air_quality_pr/media/pic_oled.png" width="400">
 </p>  
 **Description:**  
 A monochrome 128×64 pixel OLED display driven by the SSD1306 controller. Used to show sensor readings and air quality animations.
@@ -156,7 +156,7 @@ Together they form a complete, affordable, and reliable indoor air monitoring sy
 
 ## Wiring Diagram
 <p align="center">
-  <img src="(air_quality_pr/media/shema.jpg" width="600">
+  <img src="air_quality_pr/media/shema.jpg" width="800">
 </p>  
 
 ---
