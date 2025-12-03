@@ -90,6 +90,21 @@ A complete technical report will be uploaded here:
 (will be added later)
 
 ---
+## Future Improvements
+
+- **Upgrade the temperature & humidity sensor (replace DHT11 with DHT22)**  
+  The DHT22 provides noticeably better accuracy and resolution (±0.5°C vs ±2°C for DHT11, and humidity accuracy of ±2–5% vs ±5–10%).  
+  It also supports a wider measurement range, making the collected data more reliable.
+
+- **Create a custom 3D-printed enclosure and a dedicated PCB**  
+  A proper case would protect the electronics, improve airflow for sensors, and make the device look like a finished product.  
+  Designing a PCB would remove the need for a breadboard, increase durability, and reduce electrical noise.
+
+- **Use a more advanced CO₂ sensor (e.g., Sensirion STC31 or SCD4x series)**  
+  These sensors measure actual CO₂ concentration in ppm rather than estimating "air quality" like MQ135.  
+  This upgrade would dramatically improve accuracy and make the project suitable for real environmental monitoring.
+
+---
 
 ## References
 
