@@ -56,7 +56,7 @@ The MCU allows continuous monitoring without a computer and presents the data in
 
 ### **DHT11 – Temperature & Humidity Sensor**
 <p align="center">
-  <img src="air_quality_pr/media/pic_dht11.png" width="400">
+  <img src="air_quality_pr/media/pic_dht11.png" width="300">
 </p>
 
 **Description:**  
@@ -81,7 +81,7 @@ Provides basic temperature and humidity measurements.
 
 ### **MQ135 – Air Quality / CO₂ Approximation Sensor**
 <p align="center">
-  <img src="air_quality_pr/media/pic_mq135.png" width="400">
+  <img src="air_quality_pr/media/pic_mq135.png" width="300">
 </p>
 
 MQ-135 uses a heated SnO₂ sensitive layer whose resistance changes depending on the concentration of gases such as **NH₃, NOx, benzene, alcohol, smoke, and CO₂**.  
@@ -107,7 +107,7 @@ It also consumes a lot of power due to its internal heater (~800 mW).
 
 ### **SDS018 – Laser Dust Sensor (PM2.5 / PM10)**
 <p align="center">
-  <img src="air_quality_pr/media/pic_sds018.png" width="400">
+  <img src="air_quality_pr/media/pic_sds018.png" width="300">
 </p>
 
 **Description:**  
@@ -137,7 +137,7 @@ Outputs **PM2.5 and PM10 in μg/m³** through UART every second.
 
 ### **OLED SSD1306 (128×64, I²C)**
 <p align="center">
-  <img src="air_quality_pr/media/pic_oled.png" width="400">
+  <img src="air_quality_pr/media/pic_oled.png" width="300">
 </p>
 
 **Description:**  
